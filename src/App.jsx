@@ -2,8 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
-import Card from './components/shared/Card'
-import { FaWindows } from 'react-icons/fa'
+import FeedbackStats from './components/FeedbackStats'
 
 const App = () => {
   const [feedback, setFeedback] = useState(FeedbackData)
@@ -18,6 +17,7 @@ const App = () => {
     <>
       <Header text='Feedback UI' bgColor='red' textColor='blue' />
       <div className='container'>
+        <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>
     </>
