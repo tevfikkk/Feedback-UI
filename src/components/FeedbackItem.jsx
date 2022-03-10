@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
 import { FaTimes } from 'react-icons/fa'
 import Card from './shared/Card'
+import React from "react";
 
+// eslint-disable-next-line react/prop-types
 const FeedbackItem = ({ item, handleDelete }) => {
   return (
     <Card>

@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import RatingSelect from './RatingSelect'
 import Button from './shared/Button'
 import Card from './shared/Card'
 
 const FeedbackForm = () => {
   const [text, setText] = useState('')
+  // eslint-disable-next-line no-unused-vars
+  const [rating, setRating] = useState(10)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
 
@@ -20,6 +23,7 @@ const FeedbackForm = () => {
       setMessage(null)
       setBtnDisabled(false)
     }
+
     setText(e.target.value)
   }
 
@@ -27,7 +31,7 @@ const FeedbackForm = () => {
     <Card>
       <form>
         <h2>How would you rate your servioce with us?</h2>
-        {/* @todo -rating select componet */}
+        <RatingSelect select={ (rating) => setRating(rating) } />
         <div className='input-group'>
           <input
             onChange={handleTextChange}
