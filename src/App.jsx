@@ -28,7 +28,6 @@ const App = () => {
       <Header text='Feedback UI' bgColor='red' textColor='blue' />
 
       <div className='container'>
-        {/*  */}
         <Routes>
           <Route
             exact
