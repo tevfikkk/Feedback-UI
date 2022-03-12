@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 import RatingSelect from './RatingSelect'
 import Button from './shared/Button'
 import Card from './shared/Card'
 
-const FeedbackForm = ({ handleAdd }) => {
+const FeedbackForm = () => {
   const [text, setText] = useState('')
   // eslint-disable-next-line no-unused-vars
   const [rating, setRating] = useState(10)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
+
+  const { addFeedback } = useContext(FeedbackContext)
 
   const handleTextChange = e => {
     if (text === '') {
@@ -32,10 +35,10 @@ const FeedbackForm = ({ handleAdd }) => {
     if (text.trim().length > 10) {
       const newFeedback = {
         text,
-        rating
+        rating,
       }
 
-      handleAdd(newFeedback)
+      addFeedback(newFeedback)
 
       setText('')
     }
@@ -45,7 +48,7 @@ const FeedbackForm = ({ handleAdd }) => {
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate your servioce with us?</h2>
-        <RatingSelect select={ (rating) => setRating(rating) } />
+        <RatingSelect select={rating => setRating(rating)} />
         <div className='input-group'>
           <input
             onChange={handleTextChange}
